@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interface for Cryptography.</title>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+</head>
+<body>
+    <py-script>
+        def machine():
+    keys = 'abcdefghijklmnopqrstuvwxyz !'
+    values = keys[-1] + keys[0:-1]
+
+    encrytDict = dict(zip(keys, values))
+    decryptDict = dict(zip(values, keys))
+
+    message = input("Enter the message that you want to encrypt")
+    mode = input("Crypto Mode : Encode(E) OR Decode(D)")
+    if mode.upper() == 'E':
+        newMessage = ''.join([encrytDict[letter]
+                              for letter in message.lower()])
+    elif mode.upper() == 'D':
+        newMessage = ''.join([decryptDict[letter]
+                              for letter in message.lower()])
+    else:
+        print("Please try again, wrong choice entered")
+
+    return newMessage.capitalize()
+
+
+print(machine())
+    </py-script>
+</body>
+</html>
